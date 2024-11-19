@@ -94,3 +94,125 @@ table tbody tr:hover {
     background-color: #ebf4ff;
 }
 
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+body {
+    padding-top: 60px; 
+}
+
+.wiki-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.wiki-sidebar {
+    width: 250px;
+    background-color: #f6f8fa;
+    padding: 20px;
+    border-right: 1px solid #e1e4e8;
+    margin-right: 20px;
+}
+
+.wiki-sidebar h3 {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    border-bottom: 1px solid #e1e4e8;
+    padding-bottom: 10px;
+}
+
+.wiki-sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.wiki-sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.wiki-sidebar ul li a {
+    text-decoration: none;
+    color: #0366d6;
+    transition: color 0.2s ease;
+}
+
+.wiki-sidebar ul li a:hover {
+    color: #032f62;
+}
+
+.wiki-sidebar ul li a.active {
+    font-weight: bold;
+    color: #032f62;
+}
+
+.wiki-content {
+    flex-grow: 1;
+    max-width: calc(100% - 270px);
+}
+
+.markdown-body {
+    padding: 20px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+.loading, .error {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .wiki-container {
+        flex-direction: column;
+    }
+
+    .wiki-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #e1e4e8;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .wiki-content {
+        max-width: 100%;
+    }
+}
+
+/* Additional styles for code blocks */
+.markdown-body pre {
+    background-color: #f6f8fa;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+.markdown-body code {
+    background-color: #f6f8fa;
+    border: 1px solid #e1e4e8;
+    border-radius: 4px;
+    padding: 2px 4px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.markdown-body a {
+    color: #0366d6;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.markdown-body a:hover {
+    color: #032f62;
+    text-decoration: underline;
+}

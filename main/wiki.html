@@ -12,139 +12,27 @@
     <link rel="stylesheet" href="index.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.0.3/showdown.min.js"></script>
     <style>
-        /* Updated CSS to support sidebar layout */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             color: #24292e;
-        }
-
-        .wiki-container {
-            display: flex;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .wiki-sidebar {
-            width: 250px;
-            background-color: #f6f8fa;
-            padding: 20px;
-            border-right: 1px solid #e1e4e8;
-            margin-right: 20px;
-        }
-
-        .wiki-sidebar h3 {
-            margin-bottom: 15px;
-            font-size: 1.2em;
-            border-bottom: 1px solid #e1e4e8;
-            padding-bottom: 10px;
-        }
-
-        .wiki-sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .wiki-sidebar ul li {
-            margin-bottom: 10px;
-        }
-
-        .wiki-sidebar ul li a {
-            text-decoration: none;
-            color: #0366d6;
-            transition: color 0.2s ease;
-        }
-
-        .wiki-sidebar ul li a:hover {
-            color: #032f62;
-        }
-
-        .wiki-sidebar ul li a.active {
-            font-weight: bold;
-            color: #032f62;
-        }
-
-        .wiki-content {
-            flex-grow: 1;
-            max-width: calc(100% - 270px);
-        }
-
-        .markdown-body {
-            padding: 20px;
-            background-color: white;
-            border-radius: 6px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-        }
-
-        .loading, .error {
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .wiki-container {
-                flex-direction: column;
-            }
-
-            .wiki-sidebar {
-                width: 100%;
-                border-right: none;
-                border-bottom: 1px solid #e1e4e8;
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-
-            .wiki-content {
-                max-width: 100%;
-            }
-        }
-
-        /* Additional styles for code blocks */
-        .markdown-body pre {
-            background-color: #f6f8fa;
-            border: 1px solid #e1e4e8;
-            border-radius: 6px;
-            padding: 10px;
-            overflow-x: auto;
-        }
-
-        .markdown-body code {
-            background-color: #f6f8fa;
-            border: 1px solid #e1e4e8;
-            border-radius: 4px;
-            padding: 2px 4px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        /* Additional styles for links */
-        .markdown-body a {
-            color: #0366d6;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .markdown-body a:hover {
-            color: #032f62;
-            text-decoration: underline;
         }
     </style>
 </head>
 
 <body class="bg-gray-50">
     <div id="app">
-        <nav class="bg-blue-600 text-white shadow-lg">
+        <nav class="bg-blue-600 text-white shadow-lg nav">
             <div class="container mx-auto px-6 py-4">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
-                        <span class="text-xl font-bold">Tidal</span>
+                        <span class="text-xl font-bold"><a href="index.html">Tidal</a></span>
                     </div>
                     <div class="hidden md:flex space-x-8">
-                        <a href="index.html#home" class="hover:text-blue-200 transition-colors">Home</a>
-                        <a href="index.html#features" class="hover:text-blue-200 transition-colors">Features</a>
-                        <a href="index.html#documentation" class="hover:text-blue-200 transition-colors">Documentation</a>
-                        <a href="index.html#download" class="hover:text-blue-200 transition-colors">Download</a>
+                        <a href="index.html" class="hover:text-blue-200 transition-colors">Home</a>
+                        <a href="index.html#quick-links" class="hover:text-blue-200 transition-colors">Links</a>
+                        <a href="wiki.html" class="hover:text-blue-200 transition-colors">Documentation</a>
+                        <a href="index.html#download-tidal" class="hover:text-blue-200 transition-colors">Download</a>
                     </div>
                 </div>
             </div>
