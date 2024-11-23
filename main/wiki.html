@@ -38,7 +38,7 @@
             </div>
         </nav>
 
-        <section class="py-20 bg-white">
+        <section class="pt-20 pb-10 bg-white">
             <div class="wiki-container">
                 <div class="wiki-sidebar">
                     <h3>Wiki Pages</h3>
@@ -53,7 +53,15 @@
                     <div v-else class="loading">Loading...</div>
                 </div>
             </div>
+            <div class="text-center mt-8">
+                <a href="https://github.com/Tidal-Lang/Tidal/wiki" target="_blank"
+                    class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>&nbsp; View Github Version
+                </a>
+            </div>
         </section>
+
+
 
         <footer class="bg-gray-900 text-white py-12">
             <div class="container mx-auto px-6">
@@ -102,6 +110,7 @@
                         { title: 'Operators', url: 'https://raw.githubusercontent.com/wiki/Tidal-Lang/Tidal/Operators.md', content: '' },
                         { title: 'Syntax', url: 'https://raw.githubusercontent.com/wiki/Tidal-Lang/Tidal/Syntax.md', content: '' },
                         { title: 'Variables', url: 'https://raw.githubusercontent.com/wiki/Tidal-Lang/Tidal/Variables.md', content: '' },
+                        { title: 'Functions', url: 'https://raw.githubusercontent.com/wiki/Tidal-Lang/Tidal/Functions.md', content: '' },
                     ],
                     selectedPage: 'Home',
                     selectedPageContent: '',
