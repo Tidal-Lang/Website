@@ -23,11 +23,14 @@
                     <div class="flex items-center">
                         <span class="text-xl font-bold"><a href="index.html">Tidal</a></span>
                     </div>
-                    <div class="hidden md:flex space-x-8">
+                    <button class="mobile-menu-button md:hidden">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                    <div class="nav-menu hidden md:flex md:space-x-8">
                         <a href="index.html" class="hover:text-blue-200 transition-colors">Home</a>
-                        <a href="#quick-links" class="hover:text-blue-200 transition-colors">Links</a>
+                        <a href="index.html#quick-links" class="hover:text-blue-200 transition-colors">Links</a>
                         <a href="wiki.html" class="hover:text-blue-200 transition-colors">Documentation</a>
-                        <a href="#download-tidal" class="hover:text-blue-200 transition-colors">Download</a>
+                        <a href="index.html#download-tidal" class="hover:text-blue-200 transition-colors">Download</a>
                     </div>
                 </div>
             </div>
@@ -126,20 +129,20 @@ for (var i = 0; i < 5; i = i + 1) {
 
         <section class="py-16 bg-white" id="download-tidal">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12">Download Latest Release</h2>
-                <div class="text-center mt-8">
+                <h2 class="text-3xl font-bold text-center mb-8">Download Latest Release</h2>
+                <div class="text-center mb-12">
                     <a href="past-releases.html"
-                        class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block">
+                        class="bg-blue-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block w-full md:w-auto">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>&nbsp; View All Past Releases
                     </a>
                 </div>
 
                 <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="p-6 border-b border-gray-200">
-                        <div class="flex items-center justify-between">
+                    <div class="p-4 md:p-6 border-b border-gray-200">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                             <div class="flex items-center space-x-3">
                                 <i class="fas fa-tag text-green-600"></i>
-                                <a :href="release.html_url" class="text-2xl font-semibold hover:text-blue-600">
+                                <a :href="release.html_url" class="text-xl md:text-2xl font-semibold hover:text-blue-600">
                                     Release {{ release.tag_name }}
                                 </a>
                             </div>
@@ -151,36 +154,27 @@ for (var i = 0; i < 5; i = i + 1) {
                         </div>
                     </div>
 
-                    <div class="p-6 space-y-6" style="margin-top: -40px;">
-                        <div v-if="release.body" v-html="convertMarkdown(release.body)" class="markdown-body"></div>
-                        <div v-if="release.assets && release.assets.length">
-                            <h4 class="text-lg font-semibold mb-3">Assets</h4>
+                    <div class="p-4 md:p-6 space-y-6"></div>
+                        <div v-if="release.body" v-html="convertMarkdown(release.body)" class="markdown-body prose max-w-none"></div>
+                        <div v-if="release.assets && release.assets.length" class="overflow-x-auto">
                             <table class="min-w-full bg-white">
                                 <thead>
                                     <tr>
-                                        <th
-                                            class="px-6 py-3 border-b border-gray-200 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                            Name</th>
-                                        <th
-                                            class="px-6 py-3 border-b border-gray-200 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                            Size</th>
-                                        <th
-                                            class="px-6 py-3 border-b border-gray-200 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                            Download</th>
+                                        <th class="px-6 py-3 border-b border-gray-200 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                        <th class="px-6 py-3 border-b border-gray-200 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Size</th>
+                                        <th class="px-6 py-3 border-b border-gray-200 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Download</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody></tbody>
                                     <tr v-for="asset in release.assets" :key="asset.id" class="release-file">
                                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                             <span class="font-medium">{{ asset.name }}</span>
                                         </td>
                                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                            <span class="text-sm text-gray-500 ml-2">{{ formatSize(asset.size) }}
-                                                KB</span>
+                                            <span class="text-sm text-gray-500">{{ formatSize(asset.size) }} KB</span>
                                         </td>
                                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                            <a :href="asset.browser_download_url"
-                                                class="text-blue-600 hover:text-blue-800">
+                                            <a :href="asset.browser_download_url" class="text-blue-600 hover:text-blue-800">
                                                 <i class="fas fa-download"></i>
                                                 <span class="sr-only">Download {{ asset.name }}</span>
                                             </a>
@@ -232,7 +226,8 @@ for (var i = 0; i < 5; i = i + 1) {
             data() {
                 return {
                     release: {},
-                    converter: new showdown.Converter()
+                    converter: new showdown.Converter(),
+                    mobileMenuOpen: false
                 }
             },
             methods: {
@@ -259,6 +254,33 @@ for (var i = 0; i < 5; i = i + 1) {
                 this.fetchLatestRelease();
             }
         }).mount('#app')
+
+        // Add mobile menu toggle
+        document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        });
+
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuButton.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Close menu when clicking a link
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
     </script>
 
 </body>

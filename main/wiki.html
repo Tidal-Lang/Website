@@ -28,7 +28,10 @@
                     <div class="flex items-center">
                         <span class="text-xl font-bold"><a href="index.html">Tidal</a></span>
                     </div>
-                    <div class="hidden md:flex space-x-8">
+                    <button class="mobile-menu-button md:hidden">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                    <div class="nav-menu hidden md:flex md:space-x-8">
                         <a href="index.html" class="hover:text-blue-200 transition-colors">Home</a>
                         <a href="index.html#quick-links" class="hover:text-blue-200 transition-colors">Links</a>
                         <a href="wiki.html" class="hover:text-blue-200 transition-colors">Documentation</a>
@@ -149,6 +152,29 @@
                 this.fetchWikiPages();
             }
         }).mount('#app')
+    </script>
+
+    <script>
+                const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuButton.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Close menu when clicking a link
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
     </script>
 
 </body>
