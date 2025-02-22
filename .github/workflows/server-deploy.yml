@@ -1,0 +1,20 @@
+name: Deploy to Production Server
+
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+    deploy:
+        runs-on: self-hosted
+        
+        steps:
+            - name: Deploy to server
+              run: |
+                    echo "Starting deployment..."
+                    cd /var/www/tidal || exit 1
+                    echo "Pulling latest changes..."
+                    git pull || exit 1
+                    echo "Deployment completed successfully"
+              shell: bash
